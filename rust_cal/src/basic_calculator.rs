@@ -3,7 +3,6 @@ pub struct MyBasicCalculator {
     pub number2: i32,
 }
 
-// Derive Default for MyBasicCalculator to easily instantiate it
 impl Default for MyBasicCalculator {
     fn default() -> Self {
         Self { number1: 0, number2: 0 }
@@ -12,10 +11,6 @@ impl Default for MyBasicCalculator {
 
 pub trait MathTrait {
     fn calculate_expression(&mut self, expression: &str);
-    fn execute_operation(&mut self, operation: char, num1: i32, num2: i32) -> i32;
-    fn addition(&self, num1: i32, num2: i32) -> i32;
-    fn subtraction(&self, num1: i32, num2: i32) -> i32;
-    fn multiply(&self, num1: i32, num2: i32) -> i32;
 }
 
 impl MathTrait for MyBasicCalculator {
@@ -49,7 +44,9 @@ impl MathTrait for MyBasicCalculator {
             println!("Final Result: {}", result);
         }
     }
+}
 
+impl MyBasicCalculator{
     fn execute_operation(&mut self, operation: char, num1: i32, num2: i32) -> i32 {
         match operation {
             '+' => self.addition(num1, num2),
@@ -62,6 +59,7 @@ impl MathTrait for MyBasicCalculator {
         }
     }
 
+    
     fn addition(&self, num1: i32, num2: i32) -> i32 {
         num1 + num2
     }

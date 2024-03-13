@@ -1,6 +1,5 @@
 mod basic_calculator;
-use basic_calculator::MyBasicCalculator;
-use basic_calculator::MathTrait; // Import the MathTrait trait into scope
+use basic_calculator::{MathTrait, MyBasicCalculator};
 use std::io;
 
 fn main() {
@@ -8,6 +7,6 @@ fn main() {
     println!("Enter expression:");
     io::stdin().read_line(&mut expression).expect("Failed to read your expression.");
 
-    let mut math = MyBasicCalculator::default();
-    math.calculate_expression(&expression);
+    let mut calculator: Box<dyn MathTrait> = Box::new(MyBasicCalculator::default());
+    calculator.calculate_expression(&expression);
 }
